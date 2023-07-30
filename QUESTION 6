@@ -1,0 +1,16 @@
+from collections import deque
+
+def reveal_deck_increasing_order(deck):
+    deck.sort(reverse=True)
+    result = deque()
+
+    for card in deck:
+        if result:
+            result.appendleft(result.pop())
+        result.appendleft(card)
+
+    return list(result)
+
+# Examples
+print(reveal_deck_increasing_order([17, 13, 11, 2, 3, 5, 7]))  # Output: [2, 13, 3, 11, 5, 17, 7]
+print(reveal_deck_increasing_order([1, 1000]))  # Output: [1, 1000]

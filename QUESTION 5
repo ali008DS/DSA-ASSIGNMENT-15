@@ -1,0 +1,10 @@
+def find_winner(n, k):
+    winner = 0
+    for i in range(2, n + 1):
+        winner = (winner + k) % i
+
+    return winner + 1
+
+# Examples
+print(find_winner(5, 2))  # Output: 3
+print(find_winner(6, 5))  # Output: 1

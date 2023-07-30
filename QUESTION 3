@@ -1,0 +1,16 @@
+def count_students_unable_to_eat(students, sandwiches):
+    i, j = 0, 0
+    while j < len(sandwiches):
+        if students[i] == sandwiches[j]:
+            students.pop(i)
+            sandwiches.pop(j)
+        else:
+            i += 1
+            if i == len(students):
+                break
+
+    return len(students)
+
+# Examples
+print(count_students_unable_to_eat([1, 1, 0, 0], [0, 1, 0, 1]))  # Output: 0
+print(count_students_unable_to_eat([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1]))  # Output: 3

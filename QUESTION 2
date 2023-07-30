@@ -1,0 +1,19 @@
+def max_subarray_sum(nums):
+    def kadane(nums):
+        max_sum = float('-inf')
+        current_sum = 0
+        for num in nums:
+            current_sum = max(num, current_sum + num)
+            max_sum = max(max_sum, current_sum)
+        return max_sum
+
+    total_sum = sum(nums)
+    max_sum_non_circular = kadane(nums)
+    max_sum_circular = total_sum + kadane([-num for num in nums])
+    
+    return max(max_sum_non_circular, max_sum_circular)
+
+# Examples
+print(max_subarray_sum([1, -2, 3, -2]))  # Output: 3
+print(max_subarray_sum([5, -3, 5]))  # Output: 10
+print(max_subarray_sum([-3, -2, -3]))  # Output: -2
